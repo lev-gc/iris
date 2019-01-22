@@ -2,4 +2,4 @@
 
 Some Dockerfile.
 
-[Docker Hub](https://cloud.docker.com/repository/docker/levgc)
+[Docker Hub](https://hub.docker.com/u/levgc)
