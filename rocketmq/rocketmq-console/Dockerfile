@@ -1,20 +1,17 @@
 FROM openjdk:8-jre-slim
 
-# procps -> ps
-# telnet -> telnet
-# iputils-ping -> ping
-# net-tools -> ifconfig
-# curl -> curl
 RUN set -eux; \
   apt-get update; \
   apt-get install -y --no-install-recommends \
-  procps \
-  telnet \
-  iputils-ping \
-  net-tools \
+  busybox \
   curl \
   ; \
-  rm -rf /var/lib/apt/lists/*
+  rm -rf /var/lib/apt/lists/*; \
+  ln -s /bin/busybox /bin/ps; \
+  ln -s /bin/busybox /bin/ping; \
+  ln -s /bin/busybox /bin/ifconfig; \
+  ln -s /bin/busybox /bin/curl; \
+  ln -s /bin/busybox /bin/vi
 
 ENV NAMESRV_ADDR=127.0.0.1:9876
 ENV CONTEXT_PATH=""
