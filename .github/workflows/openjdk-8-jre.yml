@@ -16,7 +16,7 @@ jobs:
         password: ${{ secrets.DOCKERHUB_TOKEN }}
     - name: Build
       run: |
-        cd openjdk/jre-8/
+        cd openjdk/8-jre/
         docker build -t elvis404/openjdk:8-jre-slim .
     - name: Publish
       run: docker push elvis404/openjdk:8-jre-slim
