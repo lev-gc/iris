@@ -6,9 +6,6 @@ see [Dockerfile](https://github.com/docker-library/openjdk/blob/70b5e5f035002633
 
 ## Feature
 
-- add `procps` for `ps`
-- add `iputils-ping` for `ping`
-- add `curl` for `curl`
-- add `net-tools` for `ifconfig`
-- add `telnet` for `telnet`
-- add `vim` for `vim`
+- add package `curl`
+- add package `busybox`
+- add some symbolic link for common utilities in busybox.
