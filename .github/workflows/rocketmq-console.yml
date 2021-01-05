@@ -18,17 +18,17 @@ jobs:
 
     - name: Build Jar
       run: |
-        mkdir ${{ GITHUB_WORKSPACE }}/workspace/
-        cd ${{ GITHUB_WORKSPACE }}/workspace/
+        mkdir $GITHUB_WORKSPACE/workspace/
+        cd $GITHUB_WORKSPACE/workspace/
         wget https://github.com/apache/rocketmq-externals/archive/rocketmq-console-1.0.0.zip
         unzip rocketmq-console-1.0.0.zip
         cd rocketmq-externals-rocketmq-console-1.0.0/rocketmq-console/
         mvn clean package -Dmaven.test.skip=true
-        mv target/rocketmq-console-ng-1.0.0.jar ${{ GITHUB_WORKSPACE }}/rocketmq/rocketmq-console/
+        mv target/rocketmq-console-ng-1.0.0.jar $GITHUB_WORKSPACE/rocketmq/rocketmq-console/
 
     - name: Build Image
       run: |
-        cd ${{ GITHUB_WORKSPACE }}/rocketmq/rocketmq-console/
+        cd $GITHUB_WORKSPACE/rocketmq/rocketmq-console/
         docker build . -t elvis404/rocketmq-console:1.0.0
 
     - name: Publish
