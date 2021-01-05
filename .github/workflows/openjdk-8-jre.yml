@@ -17,6 +17,6 @@ jobs:
     - name: Build
       run: |
         cd openjdk/8-jre/
-        docker build -t elvis404/openjdk:8-jre-slim .
+        docker build -t elvis404/openjdk:8-jre .
     - name: Publish
-      run: docker push elvis404/openjdk:8-jre-slim
+      run: docker push elvis404/openjdk:8-jre
