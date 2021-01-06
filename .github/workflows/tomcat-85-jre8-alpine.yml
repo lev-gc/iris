@@ -1,0 +1,22 @@
+name: tomcat:8.5-jre8-alpine
+
+# Trigger
+on: workflow_dispatch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Docker Hub Login
+      uses: docker/login-action@v1
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
+    - name: Build
+      run: |
+        cd tomcat/8.5-jre8-alpine/
+        docker build -t elvis404/tomcat:8.5-jre8-alpine .
+    - name: Publish
+      run: docker push elvis404/tomcat:8.5-jre8-alpine
