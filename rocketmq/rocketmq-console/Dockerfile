@@ -13,10 +13,11 @@ RUN set -eux; \
   ln -s /bin/busybox /bin/curl; \
   ln -s /bin/busybox /bin/vi
 
-ENV NAMESRV_ADDR=127.0.0.1:9876
-ENV CONTEXT_PATH=""
-ENV VIP_CHANNEL=false
-ENV JAVA_OPTS="-Xmx512m -Xms512m -Xss512k -XX:MaxDirectMemorySize=128M -Dfile.encoding=UTF-8"
+ENV \
+NAMESRV_ADDR=127.0.0.1:9876 \
+CONTEXT_PATH="" \
+VIP_CHANNEL=false \
+JAVA_OPTS="-Xmx512m -Xms512m -Xss512k -XX:MaxDirectMemorySize=128M -Dfile.encoding=UTF-8"
 
 WORKDIR /opt/rocketmq-console
 ADD rocketmq-console-ng-1.0.0.jar /opt/rocketmq-console/
