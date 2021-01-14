@@ -1,5 +1,11 @@
-FROM openjdk:8-jre-slim
+FROM maven:3.6.3-openjdk-8
+WORKDIR /workspace
+RUN wget https://github.com/apache/rocketmq-externals/archive/rocketmq-console-1.0.0.zip; \
+  unzip rocketmq-console-1.0.0.zip; \
+  cd rocketmq-externals-rocketmq-console-1.0.0/rocketmq-console/; \
+  mvn clean package -Dmaven.test.skip=true
 
+FROM openjdk:8-jre-slim
 RUN set -eux; \
   apt-get update; \
   apt-get install -y --no-install-recommends \
@@ -20,7 +26,7 @@ VIP_CHANNEL=false \
 JAVA_OPTS="-Xmx512m -Xms512m -Xss512k -XX:MaxDirectMemorySize=128M -Dfile.encoding=UTF-8"
 
 WORKDIR /opt/rocketmq-console
-ADD rocketmq-console-ng-1.0.0.jar /opt/rocketmq-console/
+COPY --from=0 /workspace/rocketmq-externals-rocketmq-console-1.0.0/rocketmq-console/target/rocketmq-console-ng-1.0.0.jar /opt/rocketmq-console/
 EXPOSE 9888
 
 ENTRYPOINT ["sh", "-c", "java \
