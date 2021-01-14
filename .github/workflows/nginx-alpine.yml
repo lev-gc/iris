@@ -17,6 +17,6 @@ jobs:
     - name: Build
       run: |
         cd nginx/alpine/
-        docker build -t elvis404/nginx:alpine .
+        docker build . -t elvis404/nginx:alpine
     - name: Publish
       run: docker push elvis404/nginx:alpine

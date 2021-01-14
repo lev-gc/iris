@@ -17,6 +17,6 @@ jobs:
     - name: Build
       run: |
         cd tomcat/8.5-jre8-alpine/
-        docker build -t elvis404/tomcat:8.5-jre8-alpine .
+        docker build . -t elvis404/tomcat:8.5-jre8-alpine
     - name: Publish
       run: docker push elvis404/tomcat:8.5-jre8-alpine
