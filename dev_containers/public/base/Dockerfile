@@ -1,1 +1,4 @@
 FROM ubuntu:22.04
+
+# set LANG
+ENV LANG C.UTF-8
