@@ -21,5 +21,8 @@ jobs:
       run: |
         cd dev_containers/public/base
         docker build . -t elvis404/dev-container-base:0.0.1
+        docker tag elvis404/dev-container-base:0.0.1 elvis404/dev-container-base:latest
     - name: Publish
-      run: docker push elvis404/dev-container-base:0.0.1
+      run: |
+        docker push elvis404/dev-container-base:0.0.1
+        docker push elvis404/dev-container-base:latest
