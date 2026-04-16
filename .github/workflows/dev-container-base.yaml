@@ -9,6 +9,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      IMAGE_NAME: elvis404/dev-container-base
+      IMAGE_TAG: 0.0.1
     steps:
     - name: Checkout
       uses: actions/checkout@v4
@@ -20,9 +23,9 @@ jobs:
     - name: Build
       run: |
         cd dev_containers/public/base
-        docker build . -t elvis404/dev-container-base:0.0.1
-        docker tag elvis404/dev-container-base:0.0.1 elvis404/dev-container-base:latest
+        docker build . -t ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
+        docker tag ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }} ${{ env.IMAGE_NAME }}:latest
     - name: Publish
       run: |
-        docker push elvis404/dev-container-base:0.0.1
-        docker push elvis404/dev-container-base:latest
+        docker push ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
+        docker push ${{ env.IMAGE_NAME }}:latest
